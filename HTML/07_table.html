@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        테이블(table)
+        1. 표를 만드는 태그이다.
+        2. 테이블의 구역을 구분하는 <thead>, <tbody>, <tfoot> 태그가 있다.
+            1) 구역을 구분하는 태그는 모두 생략할 수 있다.
+            2) <tbody> 태그는 생략하더라도 사용된다, 무조건 있어야 한다 어짜피 생략해도 사용되기 때문에
+            3) 순서는 항상 <thead>, <tbody>, <tfoot> 순서가 유지된다, 순서를 뒤죽박죽 작성해도 순서가 유지된다.   
+        3. 행(Row)을 만드는 <tr> 태그가 있고, 데이터를 입력할 열을 만드는 <td> 태그가 있다.    
+     -->
+    
+     <table border="1"> <!-- border 뒤에 숫자는 선 굵기를 뜻한다, 아예 없애면 형식은 남아있대 선은 사라진다. -->
+        <thead>
+            <tr>    <!--데이터 한줄을 입력하고 싶으면-->
+                <td>제품명</td>
+                <td>입고수량</td>
+                <td>출고수량</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>신라면</td>
+                <td>10</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>진라면</td>
+                <td>20</td>
+                <td>20</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>합계</td>
+                <td>30</td>
+                <td>30</td>
+            </tr>
+        </tfoot>
+     </table>
+
+<hr>
+
+    <table>
+        <tbody>
+        <td><a href="../../images"><img src="../../images/fruit1.jpg" width="200"><br>10,000원<br><strong>베리</strong></a></td>
+        <td><img src="../../images/fruit2.jpg" width="200"><br>20,000원<br><strong>아보카도</strong></td>
+        <td><img src="../../images/fruit3.jpg" width="200"><br>30,000원<br><strong>바나나</strong></td>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- 
+        셀 병합
+        1. <td> 태그의 속성으로 병합한다.
+        2. 병합 속성
+            1) colspan : 열 병합, 좌우 셀을 하나로 병합
+            2) rowspan : 행 병합, 상하 셀을 하나로 병합
+     -->
+
+     <table border="1">
+        <tbody>
+            <tr>
+                <td>1열</td>
+                <td>2열</td>
+                <td>3열</td>
+            </tr>
+            <tr>
+                <td>1열</td>
+                <td colspan="2">2~3열</td>
+            </tr>
+            <tr>
+                <td colspan="3">1~3열</td>
+            </tr>
+        </tbody>
+     </table>
+
+     <!-- 행 병합 -->
+     <table border="1">
+        <tbody>
+            <tr>
+                <td>1행</td>
+                <td rowspan="2">1~2행</td>
+                <td rowspan="3">1~3행</td>
+            </tr>
+            <tr>
+                <td>2행</td>
+            </tr>
+            <tr>
+                <td>3행</td>
+                <td>3행</td>
+            </tr>
+        </tbody>
+     </table>
+
+<hr>
+<h1>연습문제1</h1>
+     <table border="1">
+        <tr>
+            <th colspan="2">이름</th>  <!-- 헤드전용으로 개발된 볼드체와 가운데 정렬을 한번에 해주는 기능이다 <th> -->
+            <th>나이</th>
+            <th colspan="4">주소</th>
+        </tr>
+        <tr>
+            <td colspan="2">홍길동</td>
+            <td>20세</td>
+            <td colspan="4">서울시 마포구 노고산동</td>
+        </tr>
+        <tr>
+            <th colspan="2">특기</th>
+            <th colspan="6">먹기</th>
+        </tr>
+        <tr>
+            <td rowspan="2">신체</td>
+            <td colspan="6">180.0cm</td>
+        </tr>
+        <tr>
+            <td colspan="6">83kg</td>
+        </tr>
+     </table>
+
+     <hr>
+<h1>연습문제2</h1>
+     <table border="1">
+        <tr>
+        <td rowspan="5">1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td rowspan="3">10</td>
+        <td>11</td>
+        <td>12</td>
+        <td rowspan="2">13</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>15</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+    </tr>
+    <tr>
+        <td colspan="5">19</td>
+    </tr>
+     </table>
+
+    <hr>
+<h1>연습문제3</h1>
+     <table border="1">
+        <tr>
+            <td colspan="4">1</td>
+            <td rowspan="7">2</td>
+        </tr>
+        <tr>
+            <td rowspan="5">3</td>
+            <td rowspan="4">4</td>
+            <td colspan="2">5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td rowspan="4">7</td>
+        </tr>
+        <tr>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td colspan="2">10</td>
+        </tr>
+        <tr>
+            <td colspan="4">11</td>
+        </tr>
+     </table>
+
+<hr>
+<h1>연습문제4</h1>
+     <table border="1">
+        <caption>우리펜션 객실안내</caption>
+        <thead>
+        <tr>
+            <th colspan="2">방이름</th>
+            <th colspan="2">고객구분</th>
+            <th>정원</th>
+            <th colspan="2">가격</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="2">콜로라도</td>
+            <td colspan="2">여성전용</td>
+            <td rowspan="3">4인실</td>
+            <td rowspan="4">100,000원</td>
+        </tr>
+        <tr>
+            <td rowspan="2">아레나도</td>
+            <td colspan="2">가족용</td>
+        </tr>
+        <tr>
+            <td colspan="2">커플용</td>
+        </tr>
+        <tr>
+            <td colspan="2">엘레나</td>
+            <td colspan="2">커플전용</td>
+            <td>2인실</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="7">6월 15일까지 전 객실 50% 할인</th>
+        </tr>
+    </tfoot>
+     </table>
+</body>
+</html>

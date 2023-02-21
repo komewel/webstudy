@@ -1,3 +1,5 @@
+<hr>: 구분선
+
 1. <head>는 출력되는 형식의 설정
    <body>는 본문	
 
@@ -72,3 +74,54 @@ target : "_self"   클릭하면 페이지 그대로 접속
 <a>
 <img>
 </a>
+
+10. 테이블
+표를 만들수 있는 기능이다
+<table border=""> "" 데이터값을 넣어서 표의 선 굵기를 정할 수 있다.
+
+<thead>  	thead와 tfoot은생략가능, thead, tbody, tfoot 순서를 뒤죽박죽해도
+</thead>            순서가 자동으로 맞춰진다 tbody는 생략한다해도 생략이 되질 않는다
+	  
+<tbody>
+<tr>	            <tr>사이에 있는 데이터는 한줄에 작성된다.	
+ <td></td>	<th>는 테이블 전용 기능인데 알아서 가운데 정렬과 볼드체로 써진다
+</tr>		<td>나<th>안에 colspan(가로병합), rowspan(세로병합) 기능을 쓸수있다  
+</tbody>
+
+<tfoot>
+</tfoot>
+
+</table>
+
+11. 입력창 기능
+<input type=""> 한줄입력만 가능하다
+type= text, number, radio(○) , checkbox(□)......
+타입 설정 뒤에 기능 
+1. size=""(문자창크기설정)
+
+2. maxlength=""(최대 입력 가능 문자수)
+
+3. placeholder=""(비어있는 문자창 투명글씨) 
+
+4. required=""(필수입력)
+
+5. value=""(미리 입력되있는 문자)(readonly를 뒤에 붙이면 미리입력되어
+있는 문자 말고는 입력이 불가능하다.)
+
+6. disabled(문자창을 이용할 수 없다)
+
+7. min="" max="" 숫자설정 한해서만 쓸수 있는 기능 설정할 수 있는
+   숫자범위를 정하는 기능
+
+8. <textarea> 여러 줄 입력이 가능하다.
+   rows="" cols=""으로 줄이나 너비 제한을 걸어줄수있다
+   따로 데이터를 줄때 value를 안 선언해줘도 된다.	
+
+9. type="radio"일때 name과 value를 따로 값을 설정해줄수있다
+   name을 같은 값으로 설정해주면 중복체크가 안되게 할수 있다.
+
+10. type="checkbox"는 따로 name이나 value를 설정 안해줘도
+     두번클릭으로 항목체크를 없앨수 있다, 배열값으로 설정할 때
+     이용한다고 한다.	 				
+
+
