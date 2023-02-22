@@ -1,4 +1,16 @@
 <hr>: 구분선
+name(서버에 인식시키려고 설정, name값이 서버가 인식하는 파라미터값이 됨) 
+value 같이 변수 값을 따로 설정 하는 이유는 다른 
+프로그램과 호환할라고 설정해주는것이다 자바의 배열같이
+구글폰트 : 무료 폰트사이트
+폰트 어썸 : 무료아이콘 사이트 (2, cdn하고 여기서 골라쓸거임)
+cdnjs.com : 아이콘을 네트워크로 제공하는 사이트(파일을 다운로드 받을 필요가 없어짐)
+(1, 가장먼저 작업하고)(cdn : contents delivery network)
+font-awesome을 검색해서 가장 먼저 나오는거 클릭하고 목록 가장 상단에 있는 끝에
+all.min.css 주소 복사하고(두번째 링크드주소)
+
+태그뒤에 />으로 마칠시 뒤에 따로 마침태그를 찍을 필요가없다
+더이상 입력해줄 데이터가 없다는 뜻이다
 
 1. <head>는 출력되는 형식의 설정
    <body>는 본문	
@@ -122,6 +134,47 @@ type= text, number, radio(○) , checkbox(□)......
 
 10. type="checkbox"는 따로 name이나 value를 설정 안해줘도
      두번클릭으로 항목체크를 없앨수 있다, 배열값으로 설정할 때
-     이용한다고 한다.	 				
+     이용한다고 한다.
+
+11. <select [multiple] name="">                   name뒤에 변수이름을 지정해줄 수 있다
+	<option value="">텍스트</option>   value뒤에 변수값을 지정해줄 수 있다
+     </select>
+	
+	multiple 한번에 여러개가 보이는 선택리스트가 생긴다.
+	보기 하나인 선택리스트가 생긴다.
+	option 태그에 selected 를 넣으면 넣은 문구가 
+	기본으로 보이는문구로 설정된다	
+
+12. <input type="" list="">
+	<datalist id="">
+	<option value=""/>
+	</datalist>
+	
+	list값이랑 id값에 동일한 값으로 설정 시 입력도 가능하지만 
+	자동완성 리스트가 나온다 위에 select의 기능이 입력 기능과 동시에 
+	추가기능처럼 작동한다.
+
+13. <label for="">
+	<input type="radio, checkbox" id="">
+     </label>		
+	id값이랑 for값을 동일하게 설정시 문자를 클릭해도 체크가되는 기능을 한다
+
+14. form 태그는 서버와 통신을 하기 위한기능을 제공한다.
+	<form action=""> action 속성에 데이터를 보낼 주소를 기입한다
+	<input type="">
+	submit   서버와 통신할 데이터를 보내는 버튼이 생성된다
+	reset     서버한테 송신하기 전에 입력된 데이터를 초기화해주는 버튼이 생성된다
+ 	button	아무의미 없는 버튼이 생성된다 커스터마이징을 해야한다
+	</form>	
+	<button [type="submit"]></button> <input>에 submit 타입이랑 똑같은 역할을
+				           한다, 이걸 쓰면 편하다
+	
+ 
+15. font-family: "...","...."; 폰트가 있을땐 적용되지만 없을땐 순서가 뒤로 밀리면서 최종에도
+		      없으면 설정한 종류중에 하나로 대체된다.
+
+     font-size: ..px;        폰트 픽셀 크기를 설정해준다.	
+
+     			
 
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            
+            font-family: '맑은 고딕', sans-serif; /* 1번째 폰트가 있을시 적용 없으면 그 다음폰트 이것도 없으면 monospace 종류중에 하나로 설정해라 */
+            font-family: '궁서', serif;           /* 맑은 고딕이 없으면 고딕계열(sans-serif)을 사용하시오, 궁서가 없으면 명조계열(serif)을 사용하시오.*/
+            font-size: 32px;                      /* 기본(디폴트)픽셀은 16픽셀이다*/
+            font-weight: 100;                     /* 기본(디폴트)굵기값은 400정도다, 100 ~ 900 */ 
+            font-style: italic;                   /* italic : 기울임, none : 기울임 없애기 */
+
+            /* 블록 요소는 정렬이 된다. */
+            text-align: center;                   /* 텍스트 정렬 : left, right, center, justify(기본값, 양쪽정렬 양쪽다 줄맞춤) */
+            text-decoration: underline;           /* underline : 밑줄, line-through : 취소선, none : 선 없애기 a링크에 밑줄은 이걸로 다 없애준다 */
+            text-shadow: 5px 5px 1px gray;      /* 그림자 : x방향 y방향 blur(또렷하냐 흐릿하냐 정도) */
+        }     
+        pre {
+            line-height: 32px;                     /* 행 높이 : 세로 가운데 정렬에서 주로 활용(알아서 세로 정렬이 없으므로 이걸 사용한다.) */
+            letter-spacing: 0.5px;                 /* 글자 간격 */
+            color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);           /*255가 최대 값이다*/ 
+            color: #000000;
+            color: #FFFFFF;                      /* 16진수값이다*/
+            color: rgba(0, 0, 0, 0);             /* alpha(투명도) : 0(투명) ~ 1(불투명) */   
+        }             
+        h1 {
+            /*
+                벤더 프리픽스
+                1. Vender Prefix
+                2. CSS 속성 앞에 브라우저의 벤더(제공업체)를 작성하는 것을 의미한다.
+                3. 종류
+                    1) -webkit- : 크롬, 사파리
+                    2) -moz-    : firefox
+                    3) -o-      : 오페라
+            */
+            -webkit-text-stroke-color: crimson;  /*문자의 테두리를 색칠해주는 기능이다*/
+            -webkit-text-stroke-width: 1px;
+        }      
+        a {
+            /* 인라인 요소들은 정렬이 안 된다, 인라인은 블락이 안잡혀있기 때문에 가운데 정렬이 불가능하다 블록요소로 바꿔서 정렬 시킨다. */
+            text-align: center;
+        }                    
+    </style>
+</head>
+<body>
+    
+    <p>Hello World</p>
+    <pre>Nice to meet you</pre>
+    <pre>You good?</pre>
+    <h1>I'm fine</h1>
+    <a>Contact Us</a>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!-- 
+    CSS
+    1. Cascade Style Sheet
+    2. HTML 문서에 스타일을 지정하는 언어이다.
+    3. 스타일 지정 방식
+        1) internal : <head> 태그 내부에 <style> 태그를 추가하는 방식   
+        2) external : 별도의 *.css 파일을 <link> 태그로 등록하는 방식, 외부(외부파일)의 설정을 적용, 실무 권장  
+        3) inline   : HTML 태그에 직접 style 속성을 추가하는 방식
+    4. 스타일 작성 방법
+        선택자(어떤대상 누구로 바꿔줄까 who) {
+            CSS 속성 : 값;
+            CSS 속성 : 값;
+        }
+    5. CSS 주석 : /* 주석 */     
+ -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 여기에 태그를 넣어서 CSS 작업을 하는걸 internal 방식이라고 한다. -->
+    <style>
+        /* 여기는 CSS영역이다 */
+        h1 /* h1태그를 바꿔줄게 */ {
+            color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Hello World</h1>
+
+</body>
+</html>
