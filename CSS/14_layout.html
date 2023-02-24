@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+
+    <style>
+        /* div태그라고 해도 인라인요소로 좌우로 배치하고 싶다면 부모태그의 도움이 필요하다. */
+        /* float 속성
+           1) HTML 요소들의 기본 배치(상->하, 좌->우)를 벗어날 때 사용한다.
+           2) 왼쪽이나 오른쪽 영역에 배치 시킬 수 있다.
+        */
+        .wrap1 > div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+        }
+        .wrap1 > .box1 {
+            float: left;
+        }
+        .wrap1 > .box2 {
+            float: right;
+        }
+    </style>
+    <div class="wrap1">
+        <div class="box1">BOX1</div>
+        <div class="box2">BOX2</div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at tempus turpis. Aenean quis interdum purus. Sed sit amet dui consectetur, commodo sapien eget, venenatis quam. Donec dignissim viverra quam non molestie. Vestibulum sit amet molestie sapien. Morbi dignissim vel leo vel blandit. Vivamus ex urna, auctor vel leo vel, consectetur eleifend nibh. Maecenas gravida risus vitae facilisis ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras pellentesque arcu et risus sodales, id efficitur dolor euismod. Suspendisse euismod, ante eu finibus iaculis, dolor est efficitur neque, eu gravida nisi turpis ut sapien. Sed id dapibus urna, pretium laoreet ex. Nunc posuere rutrum eros, id sollicitudin felis ullamcorper vel. Fusce interdum auctor purus, nec volutpat velit euismod sit amet. Praesent hendrerit volutpat dictum.
+    </div>
+    <style>
+        /* 
+            overflow 속성, (사이즈가 맞지 않는다, 컵에 부피를 넘어서서 물이 찼다, 넘쳤다.)
+            1. 영역을 벗어난 컨텐츠에 적용되는 속성이다.
+            2. 영역을 벗어난 컨텐츠를 숨기거나 스크롤 처리한다.
+        */
+        .wrap2 > div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            display: inline-block;
+        }
+        .wrap2 > .box1 {
+            overflow: hidden;   /* 다른영역을 침법하는 데이터는 숨겨준다, 깔끔하게 */
+        }
+        .wrap2 > .box2 {
+            overflow-x: scroll; /* 가로 방향의 스크롤이 생긴다. */
+            overflow-y: scroll; /* 세로 방향의 스크롤이 생긴다. */
+        }
+        .wrap2 > .box3 {
+            overflow: scroll;   /* 모든 방향으로 스크롤이 생긴다. */
+        }
+    </style>
+    <div class="wrap2">
+        <div class="box1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <div class="box2"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <div class="box3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+    </div>
+
+    <hr>
+
+    <style>
+        /* 
+            블록을 좌우로 배치하는 방법 - 1(one true layout)
+            1. 부모 요소를 overflow: hidden 처리한다.
+            2. 자식 요소를 float: left; (또는 float: right;) 처리한다.
+        */
+        .wrap3 {
+            overflow: hidden;
+        }
+        .wrap3 > div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            float: left;
+        }
+    </style>
+    <div class="wrap3">
+        <div class="box1">BOX1</div>
+        <div class="box2">BOX2</div>
+    </div>
+    <style>
+         /* 
+            블록을 좌우로 배치하는 방법 - 2
+            1. *부모 요소* 를 display: flex; 처리한다.
+            2. 그럼 끝.
+        */
+        div {
+            box-sizing: border-box; /* 테두리까지를 사이즈로 봅니다. */
+        }
+        .wrap4 {
+            display: flex;
+            flex-wrap: nowrap;    /* wrap, div크기에 벗어나면 다음 줄로 넘어간다, 자식들의 크기를 유지할려고 하기때문에 
+                                                   부모영역을 벗어날수도 있음.
+                                     nowrap(디폴트 값), div크기에 벗어난다 해도 다음 줄로 넘어가지 않는다,
+                                                   부모영역으로 자식들을 모두 모으는 방식 */
+            flex-direction: row;  /* row-reverse는 박스가 반대순으로 정렬된다, row,column(상하 배치), column-reverse.. 등등 */
+            justify-content: space-around; /*   여기서 문단마다 때는거 가운데 정렬(center)하는거 할수 있음
+                                                space-around 서로 사이벌리는거(끝쪽에도 여백이 생김)
+                                                space-between 끝쪽 여백은 안생기고 사이만 벌려짐 */                                                
+            width: 600px;
+            height: 100px;
+            background-color: antiquewhite;
+        }
+        .wrap4 > div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+        }
+    </style>
+    <div class="wrap4">
+        <div>BOX1</div>
+        <div>BOX2</div>
+        <div>BOX3</div>
+        <div>BOX4</div>
+        <div>BOX5</div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .wrap1 > img:nth-of-type(2) {
+            visibility: hidden;  /*이미지는 안보이지만 자리는 차지하고 있다는게 차이점*/
+        }
+    </style>
+    <div class="wrap1">
+        <img src="../../images/flower1.jpg" width="200px">
+        <img src="../../images/flower2.jpg" width="200px">
+        <img src="../../images/flower3.jpg" width="200px">
+    </div>
+    <style>
+        .wrap2 > div {
+            width: 200px;                   /*가리는 장막을 200px로 맞춰준거다.*/
+        }
+        .wrap2 > div > img {
+            width: 100%;                   /*그림을 (div랑 똑같은)100%크기로 맞춰준다*/
+        }
+        .wrap2 > div:hover > img {         /* 제대로 작동안하고 깜빡이는 이유가 호버 상태인데 뭘 또
+                                            호버를 하냐 이러면서 시스템적으로 오류가 나는거다, 
+                                            <span>으로하면 숨겨주는 틀 밖에 그림이 존재하므로 그러는거다 
+                                            그렇지만 span은 width를 설정해줄 수 없다*/
+            visibility: hidden;
+        }
+    </style>
+    <div class="wrap2">
+        <div><img src="../../images/flower1.jpg"></div>
+        <div><img src="../../images/flower2.jpg"></div>
+        <div><img src="../../images/flower3.jpg"></div>
+    </div>
+    <style>
+        .answer {
+            visibility: hidden;
+        }
+        .show_answer {
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+        .show_answer:hover + span {
+            visibility: visible;
+        }
+    </style>
+    <h1>다음 중 블록레벨이 아닌 태그는 무엇인가요?</h1>
+    <ol>
+        <li>&lt;div&gt;</li>
+        <li>&lt;ul&gt;</li>
+        <li>&lt;a&gt;</li>
+        <li>&lt;p&gt;</li>
+        <li>&lt;table&gt;</li>
+    </ol>
+    <span class="show_answer">정답보기</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="answer">3</span>
+
+</body>
+</html>
