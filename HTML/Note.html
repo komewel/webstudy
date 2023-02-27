@@ -7,6 +7,41 @@
     <title>Document</title>
 </head>
 <body>
+  
+    <style>
+        .wrap1 {
+            width: 300px;
+            height: 50px;
+            border: 1px solid gray;
+            position: relative;
+            display: flex;
+        }
+        .wrap1 > div + div {
+            top: 15px;
+            margin-top: 15px;
+          
+        }
+        .wrap1 > div:nth-of-type(2) {
+            width: 20px;
+            height: 20px;
+            border: 1px solid gray;
+            text-align: center;
+            line-height: 20px;
+        }
+        .wrap1 > div:nth-of-type(3) {
+            width: 20px;
+            height: 20px;
+            border: 1px solid gray;
+            text-align: center;
+            line-height: 20px;
+            border-left: 0;
+        }
 
+    </style>
+    <div class="wrap1">
+        <div>주식</div>
+        <div>&lt;</div>
+        <div>&gt;</div>
+    </div>
 </body>
 </html>
