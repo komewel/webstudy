@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <!-- position을 쓰는 이유 박스에 위치를 옮기고 싶다, 미세하게 조정하고 싶다 -->
+
+    <style>
+        /*
+            position: static;
+            1. 디폴트 값이다. (position을 지정하지 않으면 static이다.)
+            2. HTML 기본 배치를 따른다.
+            3. 상대적 위치 조정(top, bottom, left, right)이 불가능하다, 오른쪽으로 가고싶다면 
+               left값을준다 왼쪽에서 얼만큼 떨어트려 주세요 의미
+        */
+        .wrap1 > div {
+            width: 300px;
+            height: 100px;
+            border: 1px solid gray;
+                        /* position : static; 은 아래 메뉴가 동작하지 않는다.  */
+            top: 50px;  /* 위에서 50px 떨어뜨리기 (아래로 50px 이동) */
+            left: 50px; /* 왼쪽에서 50px 떨어뜨리기 (오른쪾으로 50px 이동) */
+                        /* 이렇게 position : static 일때 top left의 값을 아무리 줘봤자 안 옮겨진다~~~. */
+        }
+    </style>
+    <div class="wrap1">
+        <div>static BOX</div>
+    </div>
+
+    <style>
+        .wrap2 > div {
+        /*
+            position: relative;
+            1. HTML 기본 배치를 따른다. 
+            2. 상대적 위치 조정(top, bottom, left, right)이 가능하다.
+            3. 원래 자신의 위치를 기준으로 top, bottom, left, right가 동작한다.
+        */
+            width: 300px;
+            height: 100px;
+            border: 1px solid gray;
+            position: relative; /* 기준은 원래 자기자리임 */
+            top: 50px;
+            left: 50px;
+    }
+    </style>
+    <div class="wrap2">
+        <div>relative BOX</div>
+    </div>
+    <style>
+        /*
+            position: absolute;
+            1. HTML 기본 배치를 따르지 않는다.
+            2. 상대적 위치 조정(top, bottom, left, right)이 가능하다.
+            3. 부모 요소의 position: static; 아닌 경우 부모요소를 기준으로 top, bottom, left, right가 동작한다.
+            4. 일반적으로 부모 요소가 position: relative; 를 가지고 자식 요소가 positoin: absolite; 를 가진다.
+        */
+        .wrap3 {
+            margin-top: 100px;
+            width: 300px;
+            height: 300px;
+            border: 1px solid crimson;
+            position: relative;        /* 부모태크에 position: relative 를 주니까 
+                                          div 태그가 부모태그에 종속되기 시작함 
+                                          반대로 static이면 종속되지 않는다.*/
+        }
+        .wrap3 > div {                  /* absolute : 기본적인 상식을 깨는 위치에 배치하고 싶을때
+                                          부모 태그 안에서 안놀고 지 맘대로 움직임(body 태그안에서 움직임) */
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            position: absolute;
+            top: 100px; 
+            left: 100px;
+
+        }
+    </style>
+    <div class="wrap3">
+        <div>absolute BOX</div>
+    </div>
+    <style>
+        /* 연습문제 1 */
+        .wrap4 {
+            margin-top: 50px;
+            width: 300px;
+            height: 50px;
+            border: 1px solid gray;
+            position: relative;          /* 부모태그가 position: relative; 갖고있는 이유는 웬만하면 자식태그가
+                                            absolute를 가지고 있다고 생각해도 무방하다 */
+        }
+        .wrap4 > .btn_box {
+            width: 80px;
+            height: 40px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: flex;               /* 자식태그들의 좌우 배치를 위해 */
+        }
+        .wrap4 > .btn_box > div {
+            width: 50%;                 /* 40px */
+            height: 100%;               /* 40px */
+            border: 1px solid gray;
+        } 
+        .wrap4 > .btn_box > div + div { /* 첫번째 div 를 제외한 인접한 형제(div) 다수가 존재 할 수도 있음 */
+            border-left: 0;             /* 자식태그 박스간에 유격을 없앰 */
+        }
+
+    </style>
+    <div class="wrap4">
+        <div>증시</div>
+        <div class="btn_box">
+            <div>&lt;</div>
+            <div>&gt;</div>
+            <div>&lt;</div>
+            <div>&gt;</div>
+        </div>
+    </div>
+    <style>
+        /* position: fixed; 
+           위에 상단메뉴는 스크롤해도 안없어지는거 처럼 만들어줄수있음, 고로 본문을 가리는 특징이 있다.
+           고로 본문을 안가리게 설정할거면 초기창 본문을 어느정도 내려서 나오게 설정해야한다(padding, margin-top) 
+           1. HTML 문서의 특정위치에 고정시키는 방식이다.
+           2. 상대적 위치 조정(top, bottom, left, right)이 가능하다. 
+           3. 브라우저 화면 전체를 기준으로 top, bottom, left, right가 동작한다. 
+           4. position: fixed; 된 영역은 다른 영역을 가린다.
+        */
+        .wrap5 > div {
+            width: 100%;
+            height: 100px;
+            background-color: cyan;
+            position: fixed;
+            top: 0;
+            left: 0;   /* 바로 옆 기준 위에 3개, 이렇게 설정하면 브라우저 기준으로 정리된다. */
+        }
+    </style>
+    
+    <div class="wrap5">
+        <div>fixed BOX</div>
+    </div>
+    <style>
+        .wrap6 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid gray;
+            margin-top: 10px;
+        }
+        .wrap6 > .BOX1 {
+            display: flex;
+        }
+        .wrap6 > .BOX1 > div {
+            width: 80px;
+            height: 80px;
+            border: 1px solid gray;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        .wrap6 > .BOX1 > div + div {
+            margin-left: 115px;
+        }
+        .wrap6 > .BOX2 {
+            display: flex;
+        }
+        .wrap6 > .BOX2 > div {
+            width: 80px;
+            height: 80px;
+            border: 1px solid gray;
+            margin-left: 10px;
+            margin-top: 115px; 
+        }
+        .wrap6 > .BOX2 > div + div {
+            margin-left: 115px; 
+        } 
+    </style>
+    <div class="wrap6">
+        <div class="BOX1">
+            <div>봄</div>
+            <div>여름</div>
+        </div>
+        <div class="BOX2">
+        <div>가을</div>
+        <div>겨울</div>
+        </div>   
+    </div>
+    <style>
+        .wrap7 {
+            width: 300px; 
+            height: 300px;   
+            border: 1px solid gray;
+            position: relative;
+        }
+        .wrap7 > .spring{
+            width: 80px;
+            height: 80px;
+            border: 1px solid gray;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            
+        }
+        .wrap7 > .summer{
+            width: 80px;
+            height: 80px;
+            border: 1px solid gray;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .wrap7 > .autumn{
+            width: 80px;
+            height: 80px;
+            border: 1px solid gray;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        .wrap7 > .winter{
+            width: 80px;
+            height: 80px;
+            border: 1px solid gray;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+    </style>
+    <div>
+        <div class="wrap7">
+            <div class="spring">봄</div>
+            <div class="summer">여름</div>
+            <div class="autumn">가을</div>
+            <div class="winter">겨울</div>
+        </div>
+    </div>
+    <style>
+        /* 새로운 기능 */
+        /* .here은 부모가 된다. */
+        .here {
+            color: crimson;
+            font-weight: 900;
+            position: relative;
+            cursor: help;       /* 커서모양이 변함 */
+        }
+        /* ::before 또는 ::after는 자식이 된다*/
+        .here::before {
+            content: '야';
+        }
+        .here:hover:after {
+            content: attr(data-describe);
+            position: absolute; /* relative 말고 absolute를 설정한 이유는 전자는 형식안에 갖혀있으므로 다른곳에서 등장시키
+                                    려고 해도 원래 문구가 벌어진다 고로 후자를 해야지 영향이 없다*/
+           top: 20px;
+           left: 50px;
+           width: 100px;
+           height: 20px;
+           background-color: lightgoldenrodyellow;
+           border: 1px solid orange;
+           border-radius: 2px;
+        }
+    </style>
+    <p>
+        <span class="here" data-describe="풍선도움말">여기</span>를 선택하세요.
+        <!-- class="here", data-describe="풍선도움말" 이 두개는 속성(attribute)이다
+             위에 content: attr(data-...) 를 기입하면 변수처리된 데이터가 나온다 나중에 자바 스크립트에서 자주쓴다 -->
+    </p>
+</body>
+</html>

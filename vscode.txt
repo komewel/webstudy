@@ -1,4 +1,4 @@
-<nav>=<div>=<article>=<section>같은 태그
+<nav>=<div>=<article>=<section>같은 태그 같은기능을 하지만 이름의미만 다른 태그들
 <header>: 페이지 상단에 만들어지는 메인 제목
 <footer>: 페이지 하단에 만들어지는 글씨
 <hr>: 구분선
