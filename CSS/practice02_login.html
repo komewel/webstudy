@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+        .wrap {
+            width: 500px;
+        }
+        .login_wrap {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .left_wrap {
+            /*flex: 2; /* 3개중에 2개, 요소를 달리하여 다른 속성을 주는 방법, 아래 width랑 비슷한 개념 */
+            width: 65%;
+        }
+        .id_wrap {
+            display: flex;
+            margin-left: 15px;
+        }
+        .id_wrap > .icon_wrap {
+            width: 50px;
+            height: 30px;
+            border: 1px solid gray;
+            border-radius: 5px 0px 0px 0px;
+            text-align: center;
+            background-color: grey;
+            line-height: 30px
+        }
+        .id_wrap > .input_wrap {
+            width: 250px;
+            height: 30px;
+            border: 1px solid gray;
+            border-left: 0;
+            border-radius: 0px 0px 5px 0px;
+            line-height: 30px
+        }
+        .pw_wrap > .icon_wrap {
+            width: 50px;
+            height: 30px;
+            border: 1px solid gray;
+            border-radius: 5px 0px 0px 0px;
+            text-align: center;
+            background-color: grey;
+            line-height: 30px
+        }
+        .pw_wrap > .input_wrap {
+            width: 250px;
+            height: 30px;
+            border: 1px solid gray;
+            border-left: 0;
+            border-radius: 0px 0px 5px 0px;
+            line-height: 30px
+        }
+        .pw_wrap {
+            display: flex;
+            margin-left: 15px;
+            margin-top: 10px;
+        }
+        .right_wrap {
+            border: 1px solid gray;
+           /*flex: 1; /* 3개중에 1개, 요소를 달리하여 다른 속성을 주는 방법, 아래 width랑 비슷한 개념 */
+            width: 20%; 
+            text-align: center;
+            padding-top: 20px;
+            margin-right: 70px;
+            background-color: grey;
+            border-radius: 5px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <form method="post" action="/"> <!-- 보안이 필요할땐 post(ex. login) 단순 검색일때는 get -->
+            <div class="login_wrap">
+                <div class="left_wrap">
+
+                    <div class="id_wrap">
+                        <div class="icon_wrap">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="input_wrap">
+                            &nbsp;Username
+                        </div>
+                    </div>
+
+                    <div class="pw_wrap">
+                        <div class="icon_wrap">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <div class="input_wrap">
+                            &nbsp;••••
+                        </div>
+                    </div>
+
+                </div>
+                <div class="right_wrap">
+                    로그인
+                </div>    
+            </div>    
+        </form>   
+    </div>
+</body>
+</html>
