@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+         body {
+            margin-left: 650px;
+         }
+        .kakao9 {
+            margin-top: 150px;
+            font-size: 31px;
+            font-weight: 500;
+            margin-left: 250px;
+            margin-bottom: 30px;
+        }
+        #kakao1 {
+            margin-top: 50px;
+            margin-left: 90px;
+            border: 0;
+            outline: 0;
+            font-size: 16px;
+        }
+        #kakao2 {
+            margin-top: 15px;
+            margin-left: 90px;
+            border: 0;
+            outline: 0;
+            font-size: 16px;
+        }
+        .kakao3 {
+            width: 165px;
+            border: 1px solid whitesmoke;
+            margin-top: 20px;
+            margin-left: 90px;
+        }
+        .kakao7 {
+            margin-top: 8px;
+            display: flex;
+        }
+        .kakao6 {
+            width: 165px;
+            border: 1px solid whitesmoke;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        .kakao8 {
+            font-size: 12px;
+            color: gray;
+            margin-top: 6px;
+            margin-left: 20px;
+        }
+        .kakao4 {
+            display: flex;
+            margin-top: 30px;
+            font-size: 12px;
+        }
+        .kakao4 > button:nth-of-type(1) {
+            margin-left: 90px;
+            border: none;
+            background-color: white;
+        }
+        .kakao4 > button:nth-of-type(2) {
+            margin-left: 165px;
+            border: none;
+            background-color: white;
+        }
+        .kakao4 > button:nth-of-type(3) {
+            margin-left: 10px;
+            border: none;
+            background-color: white;
+        }
+        #all {
+            display: none;
+        }
+        .kakao10 > input[type=checkbox]:checked + label{ 
+        background-image: url('../../images/check2.png');
+        background-position: 0 3px; 
+        }
+        label {
+            margin-top: 0px;
+            margin-left: 90px;
+            padding-left: 20px;
+        background-image: url('../../images/check1.png');
+        background-size: 16px 16px; 
+        background-repeat: no-repeat;
+        background-position: 0 3px; 
+        }
+        .mammoth {
+            font-size: 14px;
+        }
+        .logbox {
+            text-align: center;
+            margin-top: 30px;
+            width: 400px;
+            height: 45px;
+            line-height: 45px;
+            background-color: gold;
+            border-radius: 5px;
+            margin-left: 90px;
+            border: none;
+            font-size: 16px;
+        }
+        .logbox:hover {
+            background-color: goldenrod;
+        }
+        .logbox2 {
+            text-align: center;
+            margin-top: 17px;
+            width: 400px;
+            height: 45px;
+            line-height: 45px;
+            background-color: whitesmoke;
+            border-radius: 5px;
+            margin-left: 90px;
+            border: none;
+            font-size: 16px;
+        }
+        .logbox2:hover {
+            background-color: silver;
+        }
+        .content-article {
+            width: 600px;
+            height: 400px;
+            border: 1px solid whitesmoke;
+        }
+        .doc-footer {
+            display: flex;
+            font-size: 12px;
+            margin-left: 90px;
+            margin-top: 30px;
+        }
+        .doc-footer > div:nth-of-type(2) {
+            font-weight: 900;
+        }
+        .copyright {
+            display: flex;
+            margin-left: 170px;
+            margin-top: 5px;
+            font-size: 12px;
+        }
+        .kakao {
+            font-weight: 900;
+        }
+        .kakao13 {
+            margin-left: 100px;
+            width: 390px;
+            border: 1px solid whitesmoke;
+            margin-top: 3px;
+        }
+        .kakao14 {
+            margin-left: 100px;
+            width: 390px;
+            border: 1px solid whitesmoke;
+            margin-top: 3px;
+        }
+    </style>
+    <div class="container-doc">
+        <div class="inner-container">
+            <main class="doc-main">
+                <div class="doc-title">
+                    <div class="kakao9">
+                        kakao
+                    </div>
+                </div>
+                <article class="content-article">
+                    <input type="text" id="kakao1" size="50" placeholder="카카오메일 아이디,이메일,전화번호">
+                    <div class="kakao13"></div>
+                    <input type="text" id="kakao2" size="50" placeholder="비밀번호">
+                    <div class="kakao14"></div>
+                    <div class="kakao10">
+                        <br>
+                        <input type="checkbox" id="all">
+                        <label for="all">로그인 상태 유지</label>
+                        <span>&nbsp;<i class="fa-solid fa-exclamation"></i></span>
+                        <button class="logbox">로그인</button>
+                    </div>
+                    <div class="kakao7">
+                        <div class="kakao3"></div>
+                        <div class="kakao8">또는</div>
+                        <div class="kakao6"></div>
+                    </div>
+                    <button class="logbox2">QR코드 로그인</button>
+                    <div class="kakao4"> 
+                        <button>회원가입</button>
+                        <button>계정찾기</button>
+                        <button>비밀번호 찾기</button>
+                    </div>
+
+                </article>
+            </main>
+            <footer class="doc-footer">
+                <div>이용약관&nbsp;</div>
+                <div>&nbsp;개인정보 처리방침&nbsp;</div>
+                <div>&nbsp;운영정책&nbsp;</div>
+                <div>&nbsp;고객센터&nbsp;</div>
+                <div>&nbsp;공지사항&nbsp;</div>
+                <div>&nbsp;한국어&nbsp;</div>
+                <div><i class="fa-solid fa-angle-up"></i></div>
+            </footer>
+            <div class="copyright">Copyright © <div class="kakao">Kakao Corp.</div> All rights reserved.</div>
+            
+        </div>
+    </div>
+</body>
+</html>
