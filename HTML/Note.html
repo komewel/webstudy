@@ -10,9 +10,17 @@
 
     <div id="box1">class</div>
     <script>
-        var box1 = document.getElementById('box1');
-        box1.style.color = 'red';
-        
+        function func1() {
+            console.log('Hello World1');
+        }
+
+        var func1 = function() {
+            console.log('Hello World2');
+        }
+        func1();
+        var func3 = () => {
+            console.log('Hello World');
+        }
     </script>
 
 </body>
