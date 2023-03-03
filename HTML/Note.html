@@ -8,19 +8,30 @@
 </head>
 <body>
 
-    <div id="box1">class</div>
     <script>
-        function func1() {
-            console.log('Hello World1');
-        }
 
-        var func1 = function() {
-            console.log('Hello World2');
-        }
-        func1();
-        var func3 = () => {
-            console.log('Hello World');
-        }
+       var arr = ['a', 'b', 'c', 'd'];
+       
+       for(let i = 0; i < arr.length; i++) {
+        console.log(i, arr[i]);
+
+       };
+       for(let i in arr) {
+        console.log(i, arr[i]);
+       };
+       var list = [];
+       list.push('a');
+       list.push('b');
+       list.push('c');
+       list.push('d');
+       list.unshift('f')
+
+       list.pop();
+       list.shift();
+
+       list.splice(1, 2, 'asd');
+       list.splice(1, 0, 'erer');
+       console.log(list);
     </script>
 
 </body>

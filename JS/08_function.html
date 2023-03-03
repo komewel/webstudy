@@ -133,7 +133,7 @@
             func4(); // 인수가 없기 때문에 매개변수는 undefined 상태가 된다.
 
 
-            // 함수 정의(전개 연산자)
+            // 함수 정의(전개 연산자) 
             function func5(...args) {   // 매개변수 args는 배열이다.
                 for(let i = 0; i < args.length; i++) {
                     console.log(i, args[i])
@@ -146,7 +146,7 @@
             func5('정숙', '상철');
 
 
-            // 함수 정의 (arguments 객체) // 인수 설정을 안해줘도 arguments 객체가 다 저장한다.
+            // 함수 정의 (arguments 객체, ...args랑 좀 다름 ...args는 ...뒤에 이름 아무렇게나 설정해도 결과가 나옴) // 인수 설정을 안해줘도 arguments 객체가 다 저장한다.
             function func6() {
                 for(let i =0; i < arguments.length; i++) {
                     console.log(i, arguments[i]);
@@ -156,6 +156,51 @@
             // 함수 호출 (매개변수가 없는 함수에 인수 전달하기)
             func6('은정');
             func6('미희', ' 지연');
+
+        </script>
+        <script>
+            /*
+                5. 반환
+                    1) 반환 타입의 선언이 없다.
+                    2) return; 을 통해서 함수를 종료할 수 있다.
+                    3) return 값; 을 통해서 값을 반환할 수 있다.
+            */
+
+            // 함수 정의
+            function func7(n) {
+                if(n == 0) {
+                    return; // 0이 전달되면 함수를 종료한다.
+                }
+                return n + 1; // 0이 아닌 값이 전달되면 1을 증가시켜서 반환한다.
+            }
+
+            // 함수 호출 
+            console.log(func7(10));
+            console.log(func7(0));
+        </script>
+        <script>
+            /*
+                6. 콜백 함수, 함수를 호출할 때 함수를 호출했다. 
+                    1) 어떤 함수를 다른 함수에 인수로 전달하는 개념이다.
+                    2) 인수로 전달된 함수를 저장한 매개변수가 콜백 함수이다.
+            */
+
+            // 선언적 함수(info)의 콜백
+            function info(data1, data2) {
+                console.log(data1, data2);
+            }
+            function func8(data1, data2, func) {
+                func(data1, data2); // info('집에', '가고싶다.') 형식으로 호출된다.
+            } // func가 콜백 역할을 한다. 콜백, 함수가 또 다른 함수를 부르는 역할을 한다
+            func8('집에', '가고싶다.', info);
+
+            // (일반)익명 함수의 콜백, 이것을 자주 이용한다,  
+            function func9(data1, data2, a) {
+                a(data1, data2);
+            }
+            func9('간절히', '가고싶다.', function(data1, data2) {
+                console.log(data1, data2);
+            });
 
         </script>
     
