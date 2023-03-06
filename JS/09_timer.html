@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            1. setTimeout
+                1) 한 번만 동작하는 타이머 함수이다.(반복적으로 동작하는 타이머는 따로 있다.)
+                2) 동작
+                    var id = setTimeout(동작할함수(선언함수, 익명함수 둘다 가능), 동작할시간(밀리초));
+                3) 동작 취소
+                    clearTimeout(id);
+
+        */          
+
+        /*
+        var timerid = setTimeout(function(){
+            console.log('5초 지났다.');
+        }, 5000); //5초후에 function(){}가 작동한다.
+
+        clearTimeout(timerid); // 이게 있으면 더 이상 동작을 안한다.
+        // if문 안에 있을땐 조건에 순응하지만
+            아닐땐 실행조차 못하게 방해한다, 호이스팅 순서 앞에 있나봄
+        */
+    </script>
+
+    <script>
+
+        /*
+            2. setInterval
+                1) 반복해서 동작하는 타이머 함수이다.
+                2) 동작
+                    var id = setInterval(동작할함수, 동작할시간(밀리초))
+                3) 동작 취소
+                    clearInterval(id);
+        */
+       /*
+        var n = 0;
+        var timerid = setInterval(function(){
+            console.log(n++);
+        }, 1000);
+
+        clearInterval(timerid);
+            // if문 안에 있을땐 조건에 순응하지만
+            아닐땐 실행조차 못하게 방해한다, 호이스팅 순서 앞에 있나봄
+        */
+
+    </script>
+    <h1 id="timer2"></h1>
+    <script>
+        /*
+    var n = 5;
+    var aa = setInterval(function(){
+        if(n == 0) {
+            document.getElementById('timer1').innerHTML += '땡';
+            clearInterval(aa);
+        } else {
+            document.getElementById('timer1').innerHTML += n-- + '&nbsp;&nbsp;&nbsp;';
+        }
+     },1000);
+     */
+    </script>
+
+    <script>
+        /*
+         재귀 호출 예시 : factorial 구하기 (5! = 5*4*3*2*1)
+         5! = 5 * 4!    fnFactorial(5) = 5 * fnFactorial(4)
+         4! = 4 * 3!    fnFactorial(4) = 4 * fnFactorial(3)
+         3! = 3 * 2!    fnFactorial(3) = 3 * fnFactorial(2)
+         2! = 2 * 1!    fnFactorial(2) = 2 * fnFactorial(1)
+         1! = 1         fnFactorial(1) = 1 
+        --------------------------
+                        fnFactorial(n) = n * fnFactorial(n - 1);   
+        정의된 함수에 호출하면 실행을 하다보면 자신의 호출이 있어서
+        다시 메소드가 실행되고 무한반복 자기가 자기의 함수를 가지고있는걸 재귀 호출
+        */
+
+        function fnFactorial(n) {
+            if(n == 1) {
+                return 1;
+            }else {
+                return n * fnFactorial(n - 1); // 자기가 자기를 부르는 호출
+            }
+        }  
+        console.log(fnFactorial(5));
+        /*
+         function ex() {
+            console.log('하하하');
+            ex(); // 재귀호출(reculsive call)
+        }
+        ex();
+        */
+    </script>
+    <script>
+
+        // 5초 타이머 구현하기(5 -> 4 -> 3 -> 2 -> 1 -> 땡)
+        var timer2 = document.getElementById('timer2');
+        function fnTimer(countDown) {
+            setTimeout(function(){              
+                if(countDown == 0) {
+                    timer2.textContent = '땡'; // interval clear가 맞는데 여기서는 할 필요가 없다. 
+                    return; // setTimeout에 전달된 익명 함수(콜백)를 종료한다.
+                } else {
+                    timer2.textContent = countDown;
+                    fnTimer(countDown - 1);
+                }
+            }, 1000);
+        }
+
+        fnTimer(5);
+
+    </script>
+    
+        
+        
+</body>
+</html>

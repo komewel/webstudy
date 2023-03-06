@@ -52,9 +52,19 @@
             case average >= 60: grade= 'D'; break;
             default: grade = 'F';
         }
+        switch(true) {
+            case 
+        }
         document.getElementById('average').textContent = average;
         document.getElementById('grade').textContent = grade;
-        
+    
+        if(confirm('go? stop?')) {
+            //확인 버튼
+            alert('확인');
+        }else {
+            //취소 버튼
+            alert('취소');
+        }
 </script>
 </body>
 </html>
