@@ -7,28 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        setTimeout(function(){
-            console.log('안녕하세요.');
-        } , 1000);
-        n = 1;
-        var idid = setInterval(function(){
-            if(n == 10) {
-                console.log('땡')
-                clearInterval(idid);
-            } else {
-                console.log(n++);
-            }
-        },1000)
-
-        function fnFactorial(n) {
-            if(n == 1) {
-                return 1;
-            }else {
-                return n * fnFactorial(n - 1); // 자기가 자기를 부르는 호출
-            }
-        }  
-        console.log(fnFactorial(5));
-    </script>
+    
 </body>
 </html>
