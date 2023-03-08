@@ -89,7 +89,7 @@
         btnNaver.onclick = function(event){
             if(query.value == ''){
                 event.preventDefault(); // <input type="button"> 버튼을 클릭하면 어떤 일이 있는지?, 
-                                        // 원래 하는 일이 없기 때문에 event.preventDefault()는 의미없는 코드가 된다.
+                                        // 원래 하는 일이 없기 때문에 event.preventDefault()는 의미없는 코드가 된다, 무효과 상태로 만든다.
                  return;                // 하지만, return은 이벤트 리스너를 종료시키는 역할을 수행하므로 return 이후에 나타난 submit 실행 코드의 실행 코드를 막을 수 있다.                       
             }
             frmNaver.submit(); 
@@ -100,12 +100,6 @@
      <style>
         label {
             display: block;
-        }
-        #chk_all {
-
-        }
-        .chk_one {
-
         }
      </style>
         <div>
@@ -144,17 +138,17 @@
 
             // 개별 동의를 클릭하면 -> 모든 개별 동의의 체크 유무를 확인해서
             // 모두 체크 되었으면 전체 동의를 체크하고, 아니면 전체 동의를 해제한다. 
+            // for문이라고 단순 루프문이라 생각말고 코드가 자동으로 만들어진다고 생각하는게 옳다
             var cos = 0;
             for(let i = 0; i < chkOneList.length; i++) {
                 chkOneList[i].onclick = function(){
-                cos = cos + 1; 
-                if(cos == 3) {
-                    chkAll.checked = true;
+                    let chkCount = 0;
+                    for(let j = 0; j < chkOneList.length; j++){
+                        chkCount += chkOneList[j].checked;
+                    }
+                    chkAll.checked = (chkOneList.length == chkCount); //동등비교연산자에서 true값이 나오면 
                 }
-    
-                } // onclick 이벤트가 세번이 만들어지는거다.
-            }
-            
+            }  // onclick 이벤트가 세번이 만들어지는거다.
 
         </script>
 

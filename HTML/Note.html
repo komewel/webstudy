@@ -1,12 +1,29 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+<script>
+    document.getElementById('btn_req_json').addEventListener('click', ()=>{
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'product.json', true);
+        xhr.send();
+        xhr.addEventListener('readystatechange', ()=>{
+            if(xhr.readyState == 4 && xhr.status == 200){
+                var data = JSON.parse(xhr.responseText);
+                    /*
+                    console.log(data, typeof data);
+                    var obj = JSON.parse(data); //객체로 바꿔달라, 제이슨을 읽어 들일땐 통으로 읽어 들이기 때문에
+                    console.log(obj, typeof obj);
+                    */
+                var str = '';
+                for(let i = 0; i < data.length; i++){
+                    str += '<div class="product">';
+                    str += '<span>' + data[i].model + '</span>';
+                    str += '<span>' + data[i].maker + '</span>';
+                    str += '<span>' + data[i].price + '</span>';
+                    str += '</div>';
+                }
+                document.getElementById('res_json').innerHTML = str;
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
