@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="button" id="aaa" value="책정보가져오기">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>제목</td>
+                    <td>저자</td>
+                    <td>가격</td>
+                </tr>
+            </thead>
+            <tbody id="bbb"></tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('aaa').addEventListener('click', ()=>{
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', 'sfc_web_map.xml', true);
+            xhr.send();
+            xhr.addEventListener('readystatechange', ()=>{
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    var data = JSON.parse(xhr.responseText); 
+                    var localList = data.getElementsByTagName('local');
+                    var str = '';
+                    for(let i = 0; i < localList.length; i++){
+                        str += '<tr>';
+                        str += '<td>' + localList[i].textContent + '</td>';
+                        str += '<td>' + localList[i].getAttribute('desc') + '</td>';
+                        str += '<td>' + localList[i].getAttribute('ta') + '</td>';
+                        str += '</tr>';
+                    }
+                    document.getElementById('bbb').innerHTML = str;
+                }
+            })
+        })
+    </script>
+</body>
+</html>
