@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    
+<script>
+    $(function(){
+        var fourSeason = ['spring', 'summer', 'autumn', 'winter'];
+        var str = '';
+        $.each(fourSeason, (i, element)=>{  // fourSeason 배열에서 i라는 순서를 매겨서 element(이건 정하기 나름 인거 같음)를 빼오는 과정 
+            str += '<div>' + i + ',' + element + '</div>';
+        });
+        $('#box1').append(str); // 일일이 하자니 너무 코드가 길어지고 이게 더 깔끔해진다.
+    });
+</script>
+<div id="box1"></div>
+<script>
+        $(function(){
+            var fourSeason = ['spring', 'summer', 'autumn', 'winter'];
+            var select = $('<select>').attr('name', 'season');
+            $.each(fourSeason, (i, element)=>{
+                // $('<option>').val(i + 1).text(element).appendTo(select);
+                $(select).append($('<option>').val(i + 1).text(element));
+            });
+            $('#box2').append(select);
+        });
+    </script>
+    <div id="box2"></div>
+    <script>
+        $(()=>{
+            var siteList = [
+                {
+                    'name' : '네이버',
+                    'url' : 'https://www.naver.com',
+                    'target' : '_blank'
+                },
+                {
+                    'name' : '카카오',
+                    'url' : 'https://www.kakao.com',
+                    'target' : '_self'
+                }
+            ];
+            var box3 = $('#box3');
+            $.each(siteList, (i, element)=>{
+                box3.append( $('<a>').attr('href', element.url).attr('target', element.target).text(element.name));
+            });
+
+        })
+    </script>
+    <div id="box3"></div>
+    <script>
+        $(()=>{
+            var list = [
+                {
+                    'name' : '제시카',
+                    'age'  : 30
+                },
+                {
+                    'name' : '제임스',
+                    'age'  : 40
+                }
+            ]
+            var people = $('#people');
+            $.each(list, (i, element)=>{
+                var tr = $('<tr>');
+                    tr.append($('<td>').text(i + 1));
+                        tr.append($('<td>').text(element.name));    
+                            tr.append($('<td>').text(element.age));
+                                people.append(tr);    
+                                
+                            })
+                            people.append('<tr>')
+    });
+    </script>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>순번</td>
+                    <td>이름</td>
+                    <td>나이</td>
+                </tr>
+            </thead>
+            <tbody id="people"></tbody>
+        </table>
+    </div>
+    <script>
+        $(()=>{
+            var menu = $('.menu');
+            var menuList = [];
+            $.each(menu, (i, element)=>{
+                menuList.push($(element).text()); //element는 일반객체인데 .text()는 제이쿼리 메소드이기 때문에 제이쿼리 객체화 해야 한다 .push도 일반객체 메소드이다.
+            });
+            console.log(menuList)
+        });
+    </script>
+    <div>
+        <ul>
+            <li class="menu">메뉴1</li>
+            <li class="menu">메뉴2</li>
+            <li class="menu">메뉴3</li>
+            <li class="menu">메뉴4</li>
+            <li class="menu">메뉴5</li>
+        </ul>
+    </div>
+    <script>
+        $(()=>{
+            [
+                {
+                    'regionNo' : '02',
+                    'regionName' : '서울'
+                },
+                {
+                    'regionNo' : '031',
+                    'regionName' : '경기'
+                },
+                {
+                    'regionNo' : '032',
+                    'regionName' : '인천'
+                }
+            ]
+                var optionList = [];
+                $.each($('#region option'), (i, element)=>{
+                    var option = {};
+                    option.regionNo = $(element).val();
+                    option.regionName = $(element).text();
+                    optionList.push(option);
+                });
+                console.log(optionList);
+            });
+    </script>
+    <div>
+        <select id="region">
+            <option value="02">서울</option>
+            <option value="013">경기</option>
+            <option value="032">인천</option>
+        </select>
+    </div>
+</body>
+</html>

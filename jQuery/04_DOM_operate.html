@@ -83,7 +83,7 @@
             2. 형제 관계로 추가하기
                 1) 형제.before(형제) : 이전 형제로 추가하기 
                 2) 형제.after(형제)  : 다음 형제로 추가하기
-        */
+       */
        $('#kimchi').before('<li id="ramen">라면</li>');
        $('#kimchi').after($('<li>').attr('id', 'rice').text('공기밥'));
     </script>
@@ -104,5 +104,94 @@
         $('#movies').empty();   // movies 자체는 삭제되지 않고 남는다, 하위요소만 삭제되는것 
 
     </script>
+
+<div>
+    <form id="frm">
+        <div>
+            <input type="text" placeholder="아이디">
+        </div>
+        <div>
+            <input type="password" placeholder="비밀번호">
+        </div>
+        <div>
+            <input type="radio" name="gender" value="male" id="male">
+            <label for="male">남자</label>
+            <input type="radio" name="gender" value="female" id="female">
+            <label for="female">여자</label>
+            <input type="radio" name="gender" value="none" id="none" checked>
+            <label for="none">선택안함</label>
+        </div>
+        <div>
+            <select>
+                <option value="">선택하세요</option>
+                <option value="서울" selected>서울</option>
+                <option value="경기">경기</option>
+                <option value="인천">인천</option>
+            </select>
+        </div>
+        <div>
+            <textarea>Hello World</textarea>
+        </div>
+    </form>
+</div>
+<script>
+
+    // input type=text
+    $('#frm :text').css('background-color', 'silver');
+    $('#frm :text').prop('value', 'admin');         // prop() value값 조정이 가능하지만 value()를 애용하자
+    $('#frm :text').val('master');                  // jquery에서는 입력 값을 조작하는 val 메소드, value값을 수정해주는 특수한 메소드가 따로 있다
+
+    // input type=password
+    $('#frm :password').val('1234');
+
+    // input type=radio
+    console.log($('#frm :radio').val());          // 첫 번째 radio의 value
+    console.log($('#frm :radio:checked').val());  // 체크된 radio의 value
+
+    // select
+    console.log($('#frm select').val());  // 선택된 option의 value
+
+    // textarea
+    console.log($('#frm textarea').text());   // textarea는 val()를 사용하지 않고, text()를 사용한다.
+    $('#frm textarea').text('Hello jQuery');
+
+</script>
+
+
+    <style>
+        .big-text {
+            font-size: 2em;   /* 1em 16px */
+        }
+        .red-text {
+            color: red;
+        }
+    </style>
+    <div id="box4" class="invisible">
+        Hello World
+    </div>
+    <script>
+        // 네이버 회원가입 할 때 아이디 점검할때 색깔바뀌는거 구현가능
+        // class 속성 추가 
+        $('#box4').addClass('big-text').addClass('red-text'); //메소드 체이닝
+        $('#box4').addClass('big-text red-text');  // 공백으로 class 구분 , 두가지가 다 추가되넹..
+
+        // class 속성 제거, addclass랑 사용방법 똑같음
+        $('#box4').removeClass('red-text').removeClass('big-text');
+        $('#box4').removeClass('big-text red-text');
+
+        // class 속성 토글(추가와 제거가 번갈아가면서 적용)
+        $('#box4').toggleClass('big-text').toggleClass('big-text'); // 한번 적용시 적용 한번 더 적용시 적용 해제
+        $('#box4').toggleClass('red-text').toggleClass('red-text');
+
+        // class 속성 확인(시험해보는건가?)
+        if($('#box4').hasClass('invisible')){
+           // $('#box4').css('display', 'none');
+            $('#box4').css('opacity', '0'); // 투명도를 0으로 설정하면 안 보인다.
+        }
+
+
+
+    </script>
+
 </body>
 </html>
