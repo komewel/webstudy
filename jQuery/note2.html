@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <script>
+        new Promise(function(aa, bb){
+            $.ajax({
+                type : 'GET',
+                url : 'produt.txt',
+                async : true,
+                dataType : 'text',
+                success : function(cc){
+                    aa(cc);
+                },
+                error : function(dd){
+                    bb(dd);
+                }
+            })
+        }).then(function(ee){
+            alert(ee)
+        }).catch(function(ff){
+            alert(ff.status + ff.statusText)
+        });
+    </script>
+    <script>
+        function fnvalidEmail(){
+            new Promise(function(aa, bb){
+                $.ajax({
+                    success : function(cc){
+                        if(cc){
+                            aa();
+                        } else {
+                            bb();
+                        }
+                    }
+                })
+            }).then(function(){
+                $.ajax({
+                    success : function(dd){
+                        if(dd){
+
+                        }else{
+
+                        }
+                    }
+                })
+            })
+        }
+    </script>
+    <script>
+        new Promise(function(aa, bb){
+            $.ajax({
+                type : 'GET',
+                url : 'product.txt',
+                async : true,
+                dataType : 'text',
+                success : function(cc){
+                    aa(cc);
+                },
+                error : function(dd){
+                    bb(dd);
+                }
+            })
+        }).then(function(ee){
+            alert(ee)
+        }).catch(function(ff){
+            alert(ff.status + ff.statusText)
+        })
+    </script>
+
+</body>
+</html>

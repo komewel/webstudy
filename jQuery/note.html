@@ -8,16 +8,53 @@
     <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-<div id="box"></div>
-<script>
-    $(function(){
-        var fourSeason = ['spring', 'summer', 'autumn', 'winter'];
-        var str = '<div>';
-            $.each(fourSeason, (i, a)=>{
-                $((str).append(a[i] + '<br>'))
+    <div>
+        <button id="btn5">book.xml조회하기</button>
+    </div>
+    <div id="btn5">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>제목(title)</td>
+                    <td>썸네일(image+link)</td>
+                    <td>저자(author)</td>
+                    <td>할인가(discount)</td>
+                    <td>출판사(publisher)</td>
+                    <td>출판일(pubdate)</td>
+                    <td>ISBN(isbn)</td>
+                    <td>개요(description)</td>
+                </tr>
+            </thead>
+            <tbody id="body"></tbody>
+        </table>
+    </div>
+    <script>
+        $('#btn5').on('click', function(){
+            $.ajax({
+                type : 'GET',
+                url : 'book.xml',
+                async : true,    
+                dataType : 'xml',
+                success : function(data){
+                    $.each($(data).find('item'), (a, b)=>{
+                        var tr = $('<tr>');
+                        tr.append($('<td>').html($(item).find('title').text()));
+                        tr.append($('<td>').html($('<a>').attr('target', '_blank').attr('href', $(item).find('link').text()).append($('<img>').attr('src', $('image').text()).attr('width', '80px').attr('height', '120px'))));        
+                        tr.append($('<td>').html($(item).find('author').text()));
+                        tr.append($('<td>').html($(item).find('discount').text()));     
+                        tr.append($('<td>').html($(item).find('publisher').text()));
+                        tr.append($('<td>').html($(item).find('pubdate').text()));
+                        tr.append($('<td>').html($(item).find('isbn').text()));              
+                        tr.append($('<td>').html($(item).find('description').text())); 
+                        $('#body').append(tr);             
+                        })
+                    console.log(data)
+                },
+                error : function(jqXHR){
+
+                }
             })
-            $('#box').append(str);
-    });
-</script>
+        })
+    </script>
 </body>
 </html>

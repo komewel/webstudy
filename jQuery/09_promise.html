@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <script>
+        // 비동기방식이 장점도 많지만 순서대로 돌지않음 그래서 문제가 발생함
+        // 이메일 인증시 ajax가 돌아가고 유효한 인증인지 확인함 
+        // 이메일이 맞지않는데도 응답(결과)이 돌아오지 않는데도 계속 동작(요청)을 함, 대체용으로 나온게 promise 넌 응답이 온 다음에 동작하는걸로 약속
+        // 비동기 처리의 문제점 확인하기
+        // 요청을 한 다음 응답이 올 때까지 기다리지 않는다.
+        var a; // undefined 상태
+        $.ajax({
+            // 요청
+            type : 'GET',
+            url : 'product.txt',
+            async : true,
+            // 응답
+            dataType : 'text',
+            success : function(data){
+                a = data; // a = 'Hello World'를 기대하지만, 응답이 올 때까지 기다리지 않고 다음 코드(console.log(a))가 진행된다 
+            }
+        });  //이벤트 없이 도니까 바로 돈다
+        console.log(a);  // success를 안거치고 바로 내려온다(그렇다고 안하는건 아니고 console.log가 위에 success 응답이 오기전에 미리 동작이 되는것뿐) 그러므로 undefined상태가 된다
+    </script>    
+    <script>
+        /*
+            1. 비동기 처리를 할 때 응답이 올 때까지 기다리는 (자바스크립트)객체이다.
+            2. 비동기 처리가 완료된 이후에 응답의 성공(success)과 실패(error)를 모두 처리할 수 있다.
+            2-1. then() (resolve) 메소드는 성공할 때 호출하고, catch() (reject) 메소드는 실패할 때 실행한다.(이메일)
+            3. Promise 상태
+                1) pending : 대기상태, 이행(fulfilled)하지도, 거부(reject)하지도 않은 초기 상태
+                2) fulfilled : 이행상태, 비동기 처리가 성공적으로 완료된 상태
+                3) rejected : 거부상태, 비동기 처리가 실패한 상태
+            4. promise.resolve()가 반환하는 프로미스 값은 then() 메소드를 따라가서 처리된다.
+            5. promise.reject()가 반환하는 프로미스 값은 catch() 메소드를 따라가서 처리된다.    
+        */
+    </script>
+    <script>
+
+        //promise 객체 생성하기
+        var promise = new Promise(function(resolve, reject){ // resolve : then() 메소드가 전달하는 함수가 저장,
+                                                             // reject : catch() 메소드가 전달하는 함수가 저장
+            reject();
+        });
+
+        // promise 객체의 then() 메소드 호출하기
+        promise.then(function(){
+            console.log('resolve() 호출');  // resolve로 전달, resolve 호출하는건 then메소드, 인수가 첫 번째 매개변수로 전달된다., then과 resolve는 함께 동작한다. 이게 위에 promise 객체에 인수로 들어가서 호출한다.
+        }); 
+        // promise 객체의 catch() 메소드 호출하기
+        promise.catch(function(){
+            console.log('reject() 호출');
+        }) 
+    </script>
+    <script>
+
+        // $.ajax과 Promise 함께 사용하기
+
+        // Promise 객체 생성과 then()/catch() 메소드 호출
+        new Promise(function(resolve, reject){
+
+            $.ajax({
+                // 요청
+                type : "GET",
+                url : 'product.txt',
+                async : true,
+                // 응답
+                dataType : 'text',
+                success : function(data){
+                    resolve(data); // then() 메소드에서 호출한 함수에 연결, ajax 응답이 온 뒤 resolve()가 호출된다.
+                },
+                error : function(jqXHR){
+                    reject(jqXHR); // catch() 메소드에서 정의한 함수에 연결
+                }
+            })
+        }).then(function(param){ // resolve(data); 호출로 인해서 매개변수 param에 data가 전달된다.
+            console.log(param);
+        }).catch(function(param){ // reject(jqXHR); 호출로 인해서 매개변수 param에 jqXHR이 전달된다.
+            console.log(param.status + '(' + param.statusText + ')'); // 응답코드
+        }); //메소드 체이닝 
+        /*
+        new Promise(function(a, b){
+            $.ajax({
+                type : 'GET',
+                url : 'product.txt',
+                async : true,
+                dataType : 'text',
+                success : function(c){
+                    a(c);  // a가 c를 데리고 e한테 가는거임
+                },
+                error : function(d){
+                    b(d)
+                }
+            })
+        }).then(function(e){
+            alert(e);
+        }).catch(function(f){
+            alert(f.status + f.statusText);
+        })
+        */
+
+    </script>
+    
+    <script>
+
+        // ajax 동작 완료 후 다른 ajax 동작으로 연결되는 경우
+
+        // 시나리오
+        // 1. 입력된 이메일이 기존 회원 정보에 등재된 이메일이 아니면 새로 등록함을 허용한다 
+        // 2. 이메일 인증을 통해서 인증 받은 이메일만 새로 등록함을 허용한다.
+        // 두번의 인증을 거치려면 ajax를 두번 써야한다
+
+        function fnvalidEmail(){
+            new Promise(function(resolve, reject){
+                $.ajax({
+                    // 사용자가 입력한 이메일이 DB에 있는지 점검을 요청
+                    success : function(data){
+                        if(data){ //데이터가 사용가능하다면
+                            resolve(); // 사용 가능한 이메일이다.
+                        } else {
+                            reject();  // 사용 불가능한 이메일이다.
+                        }
+                    }
+                })
+            }).then(function(){
+                $.ajax({
+                    // 사용자가 입력한 이메일로 인증코드를 보내달라는 요청
+                    success : function(data){
+                        if(data){
+                            // 인증코드 보내기 성공
+                        }else{
+                            // 인증코드 보내기 실패
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+    <script>
+        // promise 객체가 필요한 또 다른 경우 : 타이머 함수
+        var a; // a = undefined
+        setTimeout(function(){
+            a = 10;
+        }, 3000); //3초 후에 a = 10;이 처리된다.
+        console.log(a);
+    </script>
+    <script>
+        // Promise로 타이머 함수 동작 해결하기
+
+        var a; // a = undefined
+        new Promise(function(resolve, reject){
+            setTimeout(function(){
+                resolve();
+            }, 3000); // 3초 후에 resolve()가 호출된다는 약속
+        }).then(function(){
+            a = 10;
+            console.log(a);
+        });
+
+    </script>
+    <script>
+
+        // 소개. Promise 대신 콜백으로 처리하기
+        function fnFunc(callback){
+            $.ajax({
+                // 요청
+                type : 'GET',
+                url  : 'product.txt',
+                async : true,
+                //응답
+                dataType : 'text',
+                success : function(data){
+                    callback(data); // 응답 결과를 다른 함수로 넘겨서 처리
+                }
+
+            });
+        }
+        fnFunc(function(data){  // 매개변수 callback으로 전달되는 익명 함수
+            alert(data);
+        });
+
+    </script>
+
+</body>
+</html>
