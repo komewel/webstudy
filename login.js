@@ -7,7 +7,7 @@ if(idValue.length == 0){
 $('#msg_id').text('');
 idPass = false;
 }else if(idValue.length < 4){
-$('#msg_id').text('아이디는 4자 이상입니다.').css('color', '#FF0000').css('font-size', '14px');
+$('#msg_id').text('아이디는 4자 이상입니다.').css('color', '#FF0000').css('font-size', '14px').css('margin-right', '310px');
 idPass = false;
 }else{
 $('#msg_id').text('정상적인 아이디입니다.').css('color', '#0000FF').css('font-size', '14px');
